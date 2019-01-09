@@ -4,8 +4,6 @@ import hashlib
 import json
 import config
 
-# 这是一个非固定值，看起来像是选课轮次，或许明年一轮直接用163就能必中课程了吧
-courseSelectTurnAssoc = '163'
 # 这也是一个固定值，看起来像照搬的别的系统，没有删干净
 virtualCost = '0'
 
