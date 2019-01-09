@@ -104,9 +104,11 @@ def exchange_course():
         readd_checker = giver_s.post(url_check, data=readd_data)
         temp = json.loads(readd_checker.text)
         if not temp['success']:
-            print('BAD NEWS. You lost your course! Your course might be captured by others.');
-        print('Fail to exchange. But you do not lose anything. Everying stays the same.')
-    print('Congratulation! Your course has been exchanged successfully!')
+            print('BAD NEWS. You lost your course! Your course might be captured by others.')
+        else:
+            print('Fail to exchange. But you do not lose anything. Everying stays the same.')
+    else:
+        print('Congratulation! Your course has been exchanged successfully!')
 
 def logout_giver():
     global giver_s
