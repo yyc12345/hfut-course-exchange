@@ -42,6 +42,58 @@
 
 理论上不会出现错误，如果出现错误（输出了一堆堆栈），请仔细检查你的配置或网络连接
 
+### 高级脚本
+
+如果你注意了目录下的文件，你会注意到还有一个`exchange-test.py`。这也是一个换课脚本，并且做了理论上得最优优化，能以最短间隔发出退课和选课得数据包。并在发完所有数据包（退课，选课，尝试回选）之后再判定结果。
+
+由于`exchange.py`被反应说还有可能被刷课（据反映是6掉1的概率），故出此*邪招*，但是，`exchange-test.py`**不保证安全性**，因为这脚本没有经过详细测试，只是通过抓包提示得知选课可以成功。
+
+`exchange-test.py`不会给你任何可读显示，只会显示三个操作的结果。这里给出三个结果分别对应的输出情况：
+
+1. 换课成功
+
+```
+Drop course status:
+True
+Add course status:
+True
+Re-add course status:
+False
+```
+
+2. 没换成功，但是一切如初
+
+```
+Drop course status:
+True
+Add course status:
+False
+Re-add course status:
+True
+```
+
+3. 无法退课
+
+```
+Drop course status:
+False
+Add course status:
+False
+Re-add course status:
+False
+```
+
+4. 被截课
+
+```
+Drop course status:
+True
+Add course status:
+False
+Re-add course status:
+False
+```
+
 ## 原理分析
 
 观看了一部分截课，刷课脚本，共同点都是用了`sleep()`来防止被服务器干掉，本程序就是将选课和退课两部分之间的时间尽量缩短，以达到在截课刷课机器`sleep()`的时候完成换课
