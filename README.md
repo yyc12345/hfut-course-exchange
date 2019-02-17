@@ -8,8 +8,6 @@
 
 感谢[Dawnnnnnn/hfut-course](https://github.com/Dawnnnnnn/hfut-course)的刷课脚本，我是在它的基础上改造出来的。
 
-一切刷课脚本与截课脚本都应当下地狱
-
 ## 使用说明
 
 ### 环境安装
@@ -48,51 +46,18 @@
 
 由于`exchange.py`被反应说还有可能被刷课（据反映是6掉1的概率），故出此*邪招*，但是，`exchange-test.py`**不保证安全性**，因为这脚本没有经过详细测试，只是通过抓包提示得知选课可以成功。
 
-`exchange-test.py`不会给你任何可读显示，只会显示三个操作的结果。这里给出三个结果分别对应的输出情况：
+`exchange-test.py`不会给你任何可读显示，只会显示三个操作的结果，结果是一个`bool`。这里列出表格，以辅助你检查结果：
 
-1. 换课成功
-
-```
-Drop course status:
-True
-Add course status:
-True
-Re-add course status:
-False
-```
-
-2. 没换成功，但是一切如初
-
-```
-Drop course status:
-True
-Add course status:
-False
-Re-add course status:
-True
-```
-
-3. 无法退课
-
-```
-Drop course status:
-False
-Add course status:
-False
-Re-add course status:
-False
-```
-
-4. 被截课
-
-```
-Drop course status:
-True
-Add course status:
-False
-Re-add course status:
-False
-```
+|Drop course status|Add course status|Re-add course status|结果|
+|:---|:---|:---|:---|
+|True|True|True|你截了别人的课。~~还不赶快向全校学生谢罪？~~|
+|True|True|False|**换课成功**|
+|True|False|True|**没换成功，但是一切如初**|
+|True|False|False|**被截课**|
+|False|True|True|*常规操作无法复现此结果（你乱玩我就不保证了）*|
+|False|True|False|*常规操作无法复现此结果（你乱玩我就不保证了）*|
+|False|False|True|*常规操作无法复现此结果（你乱玩我就不保证了）*|
+|False|False|False|无法退课|
 
 ## 原理分析
 
